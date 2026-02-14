@@ -1,0 +1,372 @@
+:root {
+    --bg-color: #05050a;
+    --text-color: #fdfdfd;
+    --accent-color: #ffd700;
+    --glow-color: #ff1493;
+    --secondary-glow: #00bfff;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Outfit', sans-serif;
+    background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #05050a 100%);
+    color: var(--text-color);
+}
+
+/* Canvas Layer */
+#webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+.ui-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Loader */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5000;
+    transition: opacity 1s;
+}
+
+.loader-content {
+    text-align: center;
+    color: white;
+}
+
+.loader-content p {
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+/* Hero Section */
+.hero-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    z-index: 20;
+    opacity: 0;
+    /* JS fades in */
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 4rem;
+    /* Larger */
+    margin: 0;
+    letter-spacing: 5px;
+    background: linear-gradient(to right, #fff, var(--glow-color), #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.hero-rose {
+    display: inline-block;
+    filter: drop-shadow(0 0 15px rgba(220, 20, 60, 0.8));
+    animation: roseFloat 4s ease-in-out infinite;
+    vertical-align: middle;
+    /* Ensure alignment */
+}
+
+@keyframes roseFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+.subtitle {
+    font-size: 1rem;
+    letter-spacing: 4px;
+    opacity: 0.8;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+
+/* Cards */
+.star-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    /* Standard Desktop Width */
+    text-align: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.star-card.active {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+}
+
+.card-image-wrapper {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    transform: rotate(-2deg);
+    background: white;
+    padding: 10px 10px 50px 10px;
+    display: block;
+    /* Fixed block, not inline */
+}
+
+.polaroid-img,
+#card-video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;
+    /* Standard vertical ratio */
+    display: block;
+    object-fit: cover;
+    /* Fill the frame perfectly */
+    background: #eee;
+    border-radius: 2px;
+}
+
+.card-content {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Date inside Polaroid */
+.card-date {
+    display: block;
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #222;
+    /* Dark text on white */
+    letter-spacing: 2px;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.card-title {
+    margin: 0 0 10px 0;
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: #fff;
+    line-height: 1.1;
+}
+
+.card-note {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin: 0 auto;
+    font-weight: 300;
+    max-width: 80%;
+    font-style: italic;
+}
+
+/* Final Section */
+.final-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 30;
+    transition: opacity 0.8s ease;
+}
+
+.final-section.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.universe-text {
+    font-size: 3.5rem;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #fff 0%, var(--glow-color) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.3));
+}
+
+.glow-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 18px 50px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
+}
+
+.glow-button:hover {
+    background: rgba(255, 105, 180, 0.4);
+    border-color: var(--glow-color);
+    box-shadow: 0 0 40px var(--glow-color);
+    transform: scale(1.05);
+}
+
+.glow-button.small {
+    padding: 12px 30px;
+    font-size: 1rem;
+    pointer-events: auto;
+    /* Ensure clickable */
+    position: relative;
+    z-index: 5001;
+    /* Above loader bg */
+}
+
+.end-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease;
+    flex-direction: column;
+}
+
+.end-content {
+    text-align: center;
+}
+
+.end-message h1 {
+    font-size: 4rem;
+    margin-bottom: 40px;
+}
+
+.end-message.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Audio Control */
+.audio-control {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 200;
+}
+
+#toggle-audio {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+#toggle-audio:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+        flex-direction: column;
+    }
+
+    .universe-text {
+        font-size: 2.5rem;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    /* Responsive Card Styling */
+    .star-card {
+        width: 55vw !important;
+        /* 55% of mobile screen width */
+        max-width: 250px;
+        /* Cap it nicely */
+    }
+
+    .final-section .universe-text {
+        font-size: 2rem;
+        padding: 0 20px;
+        /* Prevent edge touching */
+    }
+
+    /* Fix End Message for Mobile */
+    .end-message h1 {
+        font-size: 2rem;
+        /* Much smaller than desktop 4rem */
+        line-height: 1.3;
+        padding: 0 15px;
+        word-wrap: break-word;
+    }
+
+    .end-content p {
+        font-size: 1rem !important;
+        /* Smaller subtitle */
+        padding: 0 20px;
+    }
+}

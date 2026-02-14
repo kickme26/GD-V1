@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Universe - Happy Valentine's Day</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600&family=Cinzel:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
+                "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js",
+                "gsap/ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.js",
+                "lenis": "https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.mjs"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="loader">
+        <div class="loader-content">
+            <p>Yedho ennala mudinjadhu hope u like it! Asusual konjam late pannitan madam .. 🙈❤️✨</p>
+            <button id="start-btn" class="glow-button small"
+                style="margin-top: 20px; opacity: 0; transition: opacity 1s;">Begin Journey</button>
+        </div>
+    </div>
+
+    <!-- UI Overlay -->
+    <div class="ui-layer">
+        <div class="hero-section">
+            <h1 class="glow-text">
+                Happy Valentine's Day
+                <img src="data/rose.png" class="hero-rose" alt="🌹"
+                    style="height: 2.5em; width: auto; vertical-align: middle; animation: roseFloat 4s ease-in-out infinite;">
+            </h1>
+            <p class="subtitle">Scroll to begin our journey</p>
+        </div>
+
+        <div class="final-section">
+            <h1 class="universe-text">You Are My Universe ✨</h1>
+            <button id="connect-universe" class="glow-button">Reveal Our Fate</button>
+        </div>
+
+        <div class="end-message">
+            <div class="end-content">
+                <h1>The Universe Brought Us Together✨</h1>
+                <p
+                    style="font-size: 1.2rem; margin-top: -30px; margin-bottom: 30px; letter-spacing: 2px; color: rgba(255,255,255,0.8);">
+                    (confident ah irupom 2026)</p>
+                <button id="replay-btn" class="glow-button small">Watch Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minimalist Interactive Card -->
+    <div id="star-card" class="star-card">
+        <div class="card-image-wrapper">
+            <img src="" alt="Memory" id="card-img" class="polaroid-img">
+            <video id="card-video" class="polaroid-img" loop muted playsinline
+                style="display: none; object-fit: cover;"></video>
+            <span id="card-date" class="card-date"></span>
+        </div>
+        <div class="card-content">
+            <h3 id="card-title" class="card-title"></h3>
+            <p id="card-note" class="card-note"></p>
+        </div>
+    </div>
+
+    <canvas id="webgl"></canvas>
+
+    <div class="audio-control">
+        <button id="toggle-audio">🎵</button>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
